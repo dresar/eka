@@ -1,6 +1,6 @@
 // node.js Packages / Dependencies
 const gulp          = require('gulp');
-const sass          = require('gulp-sass');
+const sass          = require('gulp-sass')(require('sass'));
 const uglify        = require('gulp-uglify');
 const rename        = require('gulp-rename');
 const concat        = require('gulp-concat');
@@ -105,3 +105,6 @@ gulp.task('watch', function() {
     gulp.watch(paths.src.js).on('change', browserSync.reload);
     gulp.watch(paths.src.html).on('change', browserSync.reload);
 });
+
+// Default task to build and watch
+gulp.task('default', gulp.series('build', 'watch'));
